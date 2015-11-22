@@ -1,11 +1,6 @@
 
-#loop for 10
-#doors = [false, false, false]
-
-# doors[rand(0..2)] = true
-
- #print doors 1 2 3
-#end
+#This is just scratch work
+#mostly Matt's handitwerk
 
 def chk_win(guess, doors)
   true if doors[guess]
@@ -46,7 +41,7 @@ switch_win = switch_win + 1 if doors[switch] == true
 
 puts switch_win
 
-end 
+end
 
 
 
