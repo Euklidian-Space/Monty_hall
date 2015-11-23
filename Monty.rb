@@ -1,5 +1,5 @@
 class Monty
-  attr_reader :stay_win, :switch_win
+  attr_reader :stay_win, :switch_win, :sim_count
   def initialize(args)
     @num_of_doors = args[:num_of_doors]
     @switch = args[:switch]  #we have an issue here if the args hash is passed with out :switch, it will default to nil(falsey)
@@ -8,9 +8,11 @@ class Monty
     #since each monty object is initialezed as a switch or not a switch
     @switch_win = 0
     @stay_win = 0
+    @sim_count = 0 #<----This will tell user how many times he/she has ran the simulation
   end
 
   def run_sim
+    sim_count += 1
     hide_prize
     player_choice_1 = player_sim
 #    @doors[player_choice_1] = "player choice" if @doors[player_choice_1].nil?
