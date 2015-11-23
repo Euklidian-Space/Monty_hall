@@ -16,9 +16,10 @@ class Monty
 #    @doors[player_choice_1] = "player choice" if @doors[player_choice_1].nil?
     if @switch
       #do some shit
-
       host_reveal
-      player_choice_2 = @doors.index{|elem| elem.nil?} #<--- wrong implementation, fixing in another branch
+      @doors[player_choice_1] = "player choice" if @doors[player_choice_1].nil?
+      player_choice_2 = @doors.index{|elem| elem != "host reveal" and elem != "player choice"}
+
       @switch_win += 1 if chk_win(player_choice_2)
     else
       @stay_win += 1 if chk_win(player_choice_1)
