@@ -13,9 +13,9 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-
+      host_reveal(player_choice_1)
     else
-      @stay_win += 1 if chk_win
+      @stay_win += 1 if chk_win(player_choice_1)
     end
 
 
@@ -31,12 +31,12 @@ class Monty
     rand(@num_of_doors)
   end
 
-  def chk_win
-    @doors[player_sim] == "Prize"
+  def chk_win(player_choice)
+    @doors[player_choice] == "Prize"
   end
 
   def host_reveal(player_choice)
-    
+
   end
 
 
