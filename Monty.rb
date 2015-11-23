@@ -18,6 +18,8 @@ class Monty
       #do some shit
 
       host_reveal
+      player_choice_2 = @doors.index{|elem| elem.nil?} #<--- wrong implementation, fixing in another branch
+      @switch_win += 1 if chk_win(player_choice_2)
     else
       @stay_win += 1 if chk_win(player_choice_1)
     end
@@ -35,6 +37,8 @@ class Monty
     rand(@num_of_doors)
   end
 
+
+
   def chk_win(player_choice)
     @doors[player_choice] == "Prize"
   end
@@ -43,7 +47,7 @@ class Monty
     #this code seeks out the first available nil element.  Eventhough this selection is
     #based off of random results, when abstracted from the problem it is not random.
     #It does not seem this would effect our results, but may warrant future exploration
-    #deffinitiely justification of keeping this mehtod private.
+    #deffinitiely justification for keeping this mehtod private.
     @doors[@doors.index{|elem| elem.nil?}] = "host reveal"
   end
 
