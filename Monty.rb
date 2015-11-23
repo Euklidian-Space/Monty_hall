@@ -18,7 +18,7 @@ class Monty
       #do some shit
 
       host_reveal
-      player_choice_2 = @doors.index{|elem| elem.nil?} #<--- wrong implementation, fixing in another branch
+      player_choice_2 = @doors.index{|elem| elem.nil?} #<--- wrong implementation, fixing in another branch "player_switch_choice_logic"
       @switch_win += 1 if chk_win(player_choice_2)
     else
       @stay_win += 1 if chk_win(player_choice_1)
