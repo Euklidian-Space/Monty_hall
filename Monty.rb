@@ -17,7 +17,11 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-      @doors[player_choice_1] = "player choice" if @doors[player_choice_1].nil?
+      if @doors[player_choice_1].nil?
+        @doors[player_choice_1] = "player choice"
+      else
+
+      end
       host_reveal
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
 
