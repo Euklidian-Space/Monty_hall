@@ -12,19 +12,22 @@ class Monty
   end
 
   def run_sim
-    sim_count.succ
+    @sim_count.succ
     hide_prize
     player_choice_1 = player_sim
     if @switch
       #do some shit
       @doors[player_choice_1] = "player choice" if @doors[player_choice_1].nil?
       host_reveal
-      player_choice_2 = @doors.index{|elem| elem != "host reveal" and elem != "player choice"}
+      player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
+
+      player_choice_2 = player_choice_options[rand(player_choice_options.length)]
 
       @switch_win.succ if chk_win(player_choice_2)
     else
       @stay_win.succ if chk_win(player_choice_1)
     end
+    #@doors = Array.new(@num_of_doors)
   end
 
   def self.reload #<---this is for testing purposes in irb
