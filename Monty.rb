@@ -30,10 +30,14 @@ class Monty
     #@doors = Array.new(@num_of_doors)
   end
 
-  
+
 
   def self.reload #<---this is for testing purposes in irb
     load 'Monty.rb'
+  end
+
+  def testing #<---- This is a wrapper function for testing purposes.  Will be removed after final iteration
+
   end
 
   private
