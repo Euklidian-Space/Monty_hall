@@ -12,7 +12,7 @@ class Monty
   end
 
   def run_sim
-    @sim_count.succ
+    @sim_count = @sim_count.succ
     hide_prize
     player_choice_1 = player_sim
     if @switch
@@ -23,12 +23,14 @@ class Monty
 
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
 
-      @switch_win.succ if chk_win(player_choice_2)
+      @switch_win = @switch_win.succ if chk_win(player_choice_2)
     else
-      @stay_win.succ if chk_win(player_choice_1)
+      @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
     #@doors = Array.new(@num_of_doors)
   end
+
+  
 
   def self.reload #<---this is for testing purposes in irb
     load 'Monty.rb'
