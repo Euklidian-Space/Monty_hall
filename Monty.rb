@@ -4,6 +4,7 @@ class Monty
     @num_of_doors = args[:num_of_doors]
     @switch = args[:switch]  #we have an issue here if the args hash is passed with out :switch, it will default to nil(falsey)
     @doors = Array.new(@num_of_doors)
+    @player_choices = Array.new(@num_of_doors) #<---- might gie this a different name
     #might combine the next two instance vars to just one @win_count
     #since each monty object is initialezed as a switch or not a switch
     @switch_win = 0
@@ -14,7 +15,7 @@ class Monty
   def run_sim
     @sim_count = @sim_count.succ
     hide_prize
-    player_choice_1 = player_sim
+   player_sim
     if @switch
       #do some shit
       if @doors[player_choice_1].nil?
@@ -51,7 +52,7 @@ class Monty
   end
 
   def player_sim
-    rand(@num_of_doors)
+    @player_choices[rand(@num_of_doors)] = "Choice"
   end
 
 
