@@ -22,7 +22,7 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-      switch_sim
+      switch_sim.call 
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
@@ -49,7 +49,7 @@ class Monty
     rand(@num_of_doors)
   end
 
-  def switch_sim #<---This should ONLY be called within run_sim.  Considering to make it a block instead
+  switch_sim = lambda { #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
       host_reveal
@@ -60,7 +60,7 @@ class Monty
       @switch_win = @switch_win.succ if chk_win(player_choice_2)
 
     end
-  end
+  }
 
   def stay_sim
     if chk_win(player_choice_1)
