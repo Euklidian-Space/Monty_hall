@@ -1,3 +1,8 @@
+###This class runs one iteration of the monty simukation
+###everytime run_sim is called on an instance of Monty.
+###We decided to leave the amount of simulations ran up to
+###the indiviual scientist's descretion.
+
 class Monty
   attr_reader :stay_win, :switch_win, :sim_count
   def initialize(args)
@@ -40,7 +45,7 @@ class Monty
     @doors[rand(@num_of_doors)] = "Prize"
   end
 
-  def player_sim #<---This method isn't really necessary.  Consider removing it.  
+  def player_sim #<---This method isn't really necessary.  Consider removing it.
     rand(@num_of_doors)
   end
 
