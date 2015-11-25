@@ -1,8 +1,7 @@
-###This class runs one iteration of the monty simulation
+###This class runs one iteration of the monty hall simulation
 ###everytime run_sim is called on an instance of Monty.
-###We decided to leave the amount of simulations run up to
-###the indiviual scientist's descretion.
-
+###The amount of simulations will be determined by the scientist
+###who decides to utilize this class in his/her own script
 class Monty
   attr_reader :stay_win, :switch_win, :sim_count
   def initialize(args)
@@ -22,7 +21,7 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-      switch_sim
+      switch_sim(player_choice_1)
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
@@ -49,7 +48,7 @@ class Monty
     rand(@num_of_doors)
   end
 
-  def switch_sim #<---This should ONLY be called within run_sim.  Considering to make it a block instead
+  def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
       host_reveal
