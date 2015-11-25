@@ -1,6 +1,6 @@
-###This class runs one iteration of the monty simukation
+###This class runs one iteration of the monty simulation
 ###everytime run_sim is called on an instance of Monty.
-###We decided to leave the amount of simulations ran up to
+###We decided to leave the amount of simulations run up to
 ###the indiviual scientist's descretion.
 
 class Monty
@@ -26,7 +26,7 @@ class Monty
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
-    #@doors = Array.new(@num_of_doors)
+    @doors = Array.new(@num_of_doors)
   end
 
 
