@@ -17,17 +17,7 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-      if @doors[player_choice_1].nil?
-        @doors[player_choice_1] = "player choice"
-      else
-
-      end
-      host_reveal
-      player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
-
-      player_choice_2 = player_choice_options[rand(player_choice_options.length)]
-
-      @switch_win = @switch_win.succ if chk_win(player_choice_2)
+      switch_sim
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
@@ -36,7 +26,7 @@ class Monty
 
 
 
-  def self.reload #<---this is for testing purposes in irb
+  def self.reload #<---this is for testing purposes in irb.  Should be removed after final iteration
     load 'Monty.rb'
   end
 
@@ -50,11 +40,29 @@ class Monty
     @doors[rand(@num_of_doors)] = "Prize"
   end
 
-  def player_sim
+  def player_sim #<---This method isn't really necessary.  Consider removing it.  
     rand(@num_of_doors)
   end
 
+  def switch_sim #<---This should ONLY be called within run_sim.  Considering to make it a block instead
+    if @doors[player_choice_1].nil?
+      @doors[player_choice_1] = "player choice"
+      host_reveal
+      player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
 
+      player_choice_2 = player_choice_options[rand(player_choice_options.length)]
+
+      @switch_win = @switch_win.succ if chk_win(player_choice_2)
+
+    end
+  end
+
+  def stay_sim
+    if chk_win(player_choice_1)
+      @stay_win = @stay_win.succ
+
+    end
+  end
 
   def chk_win(player_choice)
     @doors[player_choice] == "Prize"
