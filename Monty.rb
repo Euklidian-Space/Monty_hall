@@ -27,9 +27,9 @@ class Monty
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
-    p "Reseting doors array..."
+    p "Reseting doors array...check self for results"
     @doors = Array.new(@num_of_doors)
-    
+
   end
 
 
@@ -71,7 +71,7 @@ class Monty
     end
   end
 
-  def stay_sim
+  def stay_sim(player_choice_1)
     if chk_win(player_choice_1)
       @stay_win = @stay_win.succ
 
