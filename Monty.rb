@@ -16,7 +16,11 @@ class Monty
   def run_sim
     @sim_count = @sim_count.succ
     hide_prize
+    print "hide_prize called "
+    p self
     player_choice_1 = player_sim
+    print "first choice: "
+    p player_choice_1
     if @switch
       #do some shit
       switch_sim(player_choice_1)
@@ -49,11 +53,15 @@ class Monty
   def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
+      p self
       host_reveal
+      print "host reveals "
+      p self
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
-
+      p "player can choose the following doors: " + player_choice_options
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
-
+      p self
+      p "did player win?: " + chk_win(player_choice_2)
       @switch_win = @switch_win.succ if chk_win(player_choice_2)
 
     end
