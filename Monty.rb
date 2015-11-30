@@ -19,7 +19,7 @@ class Monty
     print "hide_prize called "
     p @doors
     player_choice_1 = player_sim
-    print "first choice: "
+    print "player first choice: "
     p player_choice_1
     if @switch
       #do some shit
@@ -27,8 +27,9 @@ class Monty
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
-    p "Reseting doors array..."
+    p "Reseting doors array...check self for results"
     @doors = Array.new(@num_of_doors)
+
   end
 
 
@@ -62,6 +63,8 @@ class Monty
       print "player can choose the following doors: "
       p player_choice_options
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
+      print "player chose: "
+      p player_choice_2
       p @doors
       print "did player win?: "
       p chk_win(player_choice_2)
@@ -70,24 +73,18 @@ class Monty
     end
   end
 
-  def stay_sim
-    if chk_win(player_choice_1)
-      @stay_win = @stay_win.succ
 
-    end
-  end
 
   def chk_win(player_choice)
     @doors[player_choice] == "Prize"
   end
 
   def host_reveal
-    #this code seeks out the first available nil element.  Eventhough this selection is
-    #based off of random results, when abstracted from the problem it is not random.
-    #It does not seem this would effect our results, but may warrant future exploration.
-    #Especially when expanding the problem to n doors.
-    #deffinitiely justification for keeping this mehtod private.
-    @doors[@doors.index{|elem| elem.nil?}] = "host reveal"
+    #This method needed to be changed slightly to reflect a more random nature.  It wasn't
+    #neccesssary in the case of 3 doors since pigeon hole principle was in affect.
+    host_options = @doors.each_index.select{|elem| @doors[elem].nil?}
+    host_choice = host_options[rand(host_options.length)]
+    @doors[host_choice] = "host reveal"
   end
 
 
