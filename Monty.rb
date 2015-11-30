@@ -6,10 +6,8 @@ class Monty
   attr_reader :stay_win, :switch_win, :sim_count
   def initialize(args)
     @num_of_doors = args[:num_of_doors]
-    @switch = args[:switch]  #we have an issue here if the args hash is passed with out :switch, it will default to nil(falsey)
+    @switch = args[:switch]  #we have an issue here, if the args hash is passed with out :switch, it will default to nil(falsey)
     @doors = Array.new(@num_of_doors)
-    #might combine the next two instance vars to just one @win_count
-    #since each monty object is initialezed as a switch or not a switch
     @switch_win = 0
     @stay_win = 0
     @sim_count = 0 #<----This will tell user how many times he/she has ran the simulation
@@ -75,7 +73,8 @@ class Monty
   def host_reveal
     #this code seeks out the first available nil element.  Eventhough this selection is
     #based off of random results, when abstracted from the problem it is not random.
-    #It does not seem this would effect our results, but may warrant future exploration
+    #It does not seem this would effect our results, but may warrant future exploration.
+    #Especially when expanding the problem to n doors.
     #deffinitiely justification for keeping this mehtod private.
     @doors[@doors.index{|elem| elem.nil?}] = "host reveal"
   end
