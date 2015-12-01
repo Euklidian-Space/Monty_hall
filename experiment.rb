@@ -1,10 +1,9 @@
 #this script is our experimentation with different variations of the Monty Hall problem
+#May turn this into a module.
 
 require_relative 'Monty.rb'
 require_relative 'Host.rb'
 
-#three_door_switch = Monty.new({switch:true,num_of_doors:3})
-#three_door = Monty.new({switch:false,num_of_doors:3})
 
 
 switch_hashes = []
