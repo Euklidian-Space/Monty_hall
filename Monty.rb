@@ -82,13 +82,11 @@ class Monty
   end
 
   def host_reveal
-    #this code seeks out the first available nil element.  Eventhough this selection is
-    #based off of random results, when abstracted from the problem it is not random.
-    #It does not seem this would effect our results, but may warrant future exploration.
-    #Especially when expanding the problem to n doors.
-    #deffinitiely justification for keeping this mehtod private.
-    @doors[@doors.index{|elem| elem.nil?}] = "host reveal"
+    #This method needed to be changed slightly to reflect a more random nature.  It wasn't
+    #neccesssary in the case of 3 doors since pigeon hole principle was in affect.
+    host_options = @doors.each_index.select{|elem| @doors[elem].nil?}
+    host_choice = host_options[rand(host_options.length)]
+    @doors[host_choice] = "host reveal"
   end
-
 
 end
