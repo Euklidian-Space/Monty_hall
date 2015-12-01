@@ -72,10 +72,6 @@ class Monty
     end
   end
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> testing_expanded_doors
 
 
   def chk_win(player_choice)
