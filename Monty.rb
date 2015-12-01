@@ -16,11 +16,11 @@ class Monty
   def run_sim
     @sim_count = @sim_count.succ
     hide_prize
-    print "hide_prize called "
-    p @doors
+    #print "hide_prize called "
+    #p @doors
     player_choice_1 = player_sim
-    print "first choice: "
-    p player_choice_1
+    #print "player first choice: "
+    #p player_choice_1
     if @switch
       #do some shit
       switch_sim(player_choice_1)
@@ -54,28 +54,29 @@ class Monty
   def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
-      p @doors
+      #p @doors
       host_reveal
-      print "host reveals "
-      p @doors
+      #print "host reveals "
+      #p @doors
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
-      print "player can choose the following doors: "
-      p player_choice_options
+      #print "player can choose the following doors: "
+      #p player_choice_options
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
-      p @doors
-      print "did player win?: "
-      p chk_win(player_choice_2)
+      #print "player chose: "
+      #p player_choice_2
+      #p @doors
+      #print "did player win?: "
+      #p chk_win(player_choice_2)
       @switch_win = @switch_win.succ if chk_win(player_choice_2)
 
     end
   end
 
-  def stay_sim(player_choice_1)
-    if chk_win(player_choice_1)
-      @stay_win = @stay_win.succ
+<<<<<<< HEAD
+  
+=======
+>>>>>>> testing_expanded_doors
 
-    end
-  end
 
   def chk_win(player_choice)
     @doors[player_choice] == "Prize"
