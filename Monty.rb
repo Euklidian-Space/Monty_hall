@@ -23,11 +23,7 @@ class Monty
     #p player_choice_1
     if @switch
       #do some shit
-<<<<<<< HEAD
 
-=======
-      switch_sim(player_choice_1)
->>>>>>> gen_test
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
@@ -55,8 +51,7 @@ class Monty
     rand(@num_of_doors)
   end
 
-<<<<<<< HEAD
-=======
+
   def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
@@ -78,9 +73,6 @@ class Monty
     end
   end
 
-
-
->>>>>>> gen_test
   def chk_win(player_choice)
     @doors[player_choice] == "Prize"
   end
