@@ -16,11 +16,7 @@ class Monty
   def run_sim
     @sim_count = @sim_count.succ
     hide_prize
-    #print "hide_prize called "
-    #p @doors
     player_choice_1 = player_sim
-    #print "player first choice: "
-    #p player_choice_1
     if @switch
       #do some shit
 
