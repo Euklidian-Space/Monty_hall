@@ -19,22 +19,12 @@ class Monty
     player_choice_1 = player_sim
     if @switch
       #do some shit
-
+      switch_sim(player_choice_1)
     else
       @stay_win = @stay_win.succ if chk_win(player_choice_1)
     end
     @doors = Array.new(@num_of_doors)
     "Reseting doors array...check self for results"
-  end
-
-
-
-  def self.reload #<---this is for testing purposes in irb.  Should be removed after final iteration
-    load 'Monty.rb'
-  end
-
-  def testing #<---- This is a wrapper function for testing purposes.  Will be removed after final iteration
-
   end
 
   private
@@ -51,21 +41,10 @@ class Monty
   def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
-      #p @doors
       host_reveal
-      #print "host reveals "
-      #p @doors
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
-      #print "player can choose the following doors: "
-      #p player_choice_options
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
-      #print "player chose: "
-      #p player_choice_2
-      #p @doors
-      #print "did player win?: "
-      #p chk_win(player_choice_2)
       @switch_win = @switch_win.succ if chk_win(player_choice_2)
-
     end
   end
 
@@ -74,8 +53,6 @@ class Monty
   end
 
   def host_reveal
-    #This method needed to be changed slightly to reflect a more random nature.  It wasn't
-    #neccesssary in the case of 3 doors since pigeon hole principle was in affect.
     host_options = @doors.each_index.select{|elem| @doors[elem].nil?}
     host_choice = host_options[rand(host_options.length)]
     @doors[host_choice] = "host reveal"
