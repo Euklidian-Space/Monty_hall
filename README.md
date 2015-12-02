@@ -6,6 +6,7 @@ mont = Monty.new(args)
 where args is a hash with the following keys,
 
 :switch <----boolean
+
 :num_of_doors <----integer
 
 to run one simulation a user must call .run_sim on your monty object.  To see how many wins
