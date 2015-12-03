@@ -6,7 +6,7 @@ class Monty
   attr_reader :stay_win, :switch_win, :sim_count
   def initialize(args = {})
     @num_of_doors = args[:num_of_doors] || default_num_of_doors
-    @switch = args[:switch] || default_switch
+    @switch = args.fetch(:switch, default_switch)
     @num_of_reveals = args[:num_of_reveals] || default_num_of_reveals
     @doors = Array.new(@num_of_doors)
     @switch_win = 0

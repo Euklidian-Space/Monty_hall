@@ -16,40 +16,47 @@ stay_objects = []
   stay_hashes << {switch:false,num_of_doors:i,num_of_reveals:i - 2}
 end
 
-switch_hashes.each do |t|
-  switch_objects << Monty.new(t)
+switch_hashes.each do |i|
+  switch_objects << Monty.new(i)
 end
 
-stay_objects.each do |s|
-  stay_objects << Monty.new(s)
+stay_hashes.each do |i|
+  stay_objects << Monty.new(i)
 end
 
-switch_objects.each do |r|
+# switch_objects.each do |i|
+#   1000.times do
+#     i.run_sim
+#   end
+#   p i.switch_win
+# end
+
+stay_objects.each do |i|
   1000.times do
-    r.run_sim
+    i.run_sim
   end
-  p r.switch_win
+  p i.stay_win
 end
 
-p "Incrementing reveals on 20 door case with switch..."
-
-case_hashes = []
-case_objects = []
-
-(1..18).each do |h|
-  case_hashes << {switch:true,num_of_doors:20,num_of_reveals:h}
-end
-
-case_hashes.each do |j|
-  case_objects << Monty.new(j)
-end
-
-case_objects.each do |k|
-  1000.times do
-    k.run_sim
-  end
-  p k.switch_win
-end
+# p "Incrementing reveals on 20 door case with switch..."
+#
+# case_hashes = []
+# case_objects = []
+#
+# (1..18).each do |h|
+#   case_hashes << {switch:true,num_of_doors:20,num_of_reveals:h}
+# end
+#
+# case_hashes.each do |j|
+#   case_objects << Monty.new(j)
+# end
+#
+# case_objects.each do |k|
+#   1000.times do
+#     k.run_sim
+#   end
+#   p k.switch_win
+# end
 
 
 
