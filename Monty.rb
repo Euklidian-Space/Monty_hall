@@ -4,9 +4,10 @@
 ###who decides to utilize this class in his/her own script
 class Monty
   attr_reader :stay_win, :switch_win, :sim_count
-  def initialize(args)
-    @num_of_doors = args[:num_of_doors]
-    @switch = args[:switch]  #we have an issue here, if the args hash is passed with out :switch, it will default to nil(falsey)
+  def initialize(args = {})
+    @num_of_doors = args[:num_of_doors] || default_num_of_doors
+    @switch = args[:switch] || default_switch
+    @num_of_reveals = args[:num_of_reveals] || default_num_of_reveals
     @doors = Array.new(@num_of_doors)
     @switch_win = 0
     @stay_win = 0
@@ -27,6 +28,22 @@ class Monty
     "Reseting doors array...check self for results"
   end
 
+  def default_switch
+    true
+  end
+
+  def default_num_of_doors
+    3
+  end
+
+  def default_num_of_reveals
+    default_num_of_doors - 2 #<---- We chose this as default since this is the borderline case Ordo Naturalis was interested in
+  end
+
+  def self.reload
+    load 'Monty.rb'
+  end
+
   private
 
   def hide_prize
@@ -41,7 +58,9 @@ class Monty
   def switch_sim(player_choice_1) #<---This should ONLY be called within run_sim.  Considering to make it a block instead
     if @doors[player_choice_1].nil?
       @doors[player_choice_1] = "player choice"
-      host_reveal
+      @num_of_reveals.times do
+        host_reveal
+      end
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
       player_choice_2 = player_choice_options[rand(player_choice_options.length)]
       @switch_win = @switch_win.succ if chk_win(player_choice_2)

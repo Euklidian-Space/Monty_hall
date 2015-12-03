@@ -2,6 +2,10 @@
 #reveals in relation to total number of doors.  This class inherits from Monty
 #with an addition num_of_reveals attribute
 
+
+
+###We determined that this class was unnecessary 
+
 class Host < Monty
 
   def initialize(args)

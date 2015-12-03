@@ -17,11 +17,11 @@ stay_objects = []
 end
 
 switch_hashes.each do |t|
-  switch_objects << Host.new(t)
+  switch_objects << Monty.new(t)
 end
 
 stay_objects.each do |s|
-  stay_objects << Host.new(s)
+  stay_objects << Monty.new(s)
 end
 
 switch_objects.each do |r|
@@ -41,7 +41,7 @@ case_objects = []
 end
 
 case_hashes.each do |j|
-  case_objects << Host.new(j)
+  case_objects << Monty.new(j)
 end
 
 case_objects.each do |k|
