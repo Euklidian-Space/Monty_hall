@@ -2,8 +2,8 @@
 #May turn this into a module.
 
 require_relative 'Monty.rb'
-require_relative 'Host.rb'
-
+require_relative 'Switch.rb'
+require_relative 'Stay.rb'
 
 
 switch_hashes = []
@@ -17,19 +17,19 @@ stay_objects = []
 end
 
 switch_hashes.each do |i|
-  switch_objects << Monty.new(i)
+  switch_objects << Switch.new(i)
 end
 
 stay_hashes.each do |i|
-  stay_objects << Monty.new(i)
+  stay_objects << Stay.new(i)
 end
 
-# switch_objects.each do |i|
-#   1000.times do
-#     i.run_sim
-#   end
-#   p i.switch_win
-# end
+switch_objects.each do |i|
+  1000.times do
+    i.run_sim
+  end
+  p i.switch_win
+end
 
 stay_objects.each do |i|
   1000.times do
@@ -38,25 +38,25 @@ stay_objects.each do |i|
   p i.stay_win
 end
 
-# p "Incrementing reveals on 20 door case with switch..."
-#
-# case_hashes = []
-# case_objects = []
-#
-# (1..18).each do |h|
-#   case_hashes << {switch:true,num_of_doors:20,num_of_reveals:h}
-# end
-#
-# case_hashes.each do |j|
-#   case_objects << Monty.new(j)
-# end
-#
-# case_objects.each do |k|
-#   1000.times do
-#     k.run_sim
-#   end
-#   p k.switch_win
-# end
+p "Incrementing reveals on 20 door case with switch..."
+
+case_hashes = []
+case_objects = []
+
+(1..18).each do |h|
+  case_hashes << {switch:true,num_of_doors:20,num_of_reveals:h}
+end
+
+case_hashes.each do |j|
+  case_objects << Switch.new(j)
+end
+
+case_objects.each do |k|
+  1000.times do
+    k.run_sim
+  end
+  p k.switch_win
+end
 
 
 

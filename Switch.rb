@@ -26,7 +26,7 @@ class Switch < Monty
       end
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
       player_choice = player_choice_options[rand(player_choice_options.length)]
-      @switch_win = @switch_win.succ if chk_win(player_choice_2)
+      @switch_win = @switch_win.succ if chk_win(player_choice)
     end
   end
 

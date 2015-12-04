@@ -15,7 +15,7 @@ class Monty
   def run_sim
     @sim_count = @sim_count.succ
     hide_prize
-    player_choice_1 = player_sim
+    player_choice_1 = rand(@num_of_doors)
     local_sim(player_choice_1)
     @doors = Array.new(@num_of_doors)
     "Reseting doors array...check self for results"
@@ -29,14 +29,14 @@ class Monty
     default_num_of_doors - 2 #<---- We chose this as default since this is the borderline case Ordo Naturalis was interested in
   end
 
+  def self.reload
+    load 'Monty.rb'
+  end
+
   private
 
   def hide_prize
     @doors[rand(@num_of_doors)] = "Prize"
-  end
-
-  def player_sim #<---This method isn't really necessary.  Consider removing it.
-    rand(@num_of_doors)
   end
 
   def chk_win(player_choice)
@@ -50,6 +50,11 @@ class Monty
   end
 
   def local_sim(args)
+    raise NotImplementedError,
+      "This #{self.class} object cannot respond to: local_sim"
+  end
+
+  def post_initialize(args)
     nil
   end
 
