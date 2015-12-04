@@ -1,24 +1,14 @@
 Welcome to our monty hall project.  In order to use this for your own experiments
-require both Monty.rb in your script. Create a monty object like so
+require both Monty.rb in your script.
 
-mont = Monty.new(args)
+We have made Monty an abstract class with Stay and Switch classes inheriting from it.
+If you want to simulate a switch you must instantiate a switch object like so
 
-where args is a hash with the following keys,
+variable = Switch.new(args)
 
-:switch <----boolean
+where args is a hash with keys :num_of_doors num_of_reveals representing the number
+of doors the game starts with and the number of doors the game host opens respectively.  If you want the classic Monty hall set up merely omit the args hash.
 
-:num_of_doors <----integer
+To run one simulation merely call run_sim on your Switch object.  
 
-:num_of_reveals <----integer
-
-If you want a classical Monty Hall set up merely instantiate a Monty object without
-passing any argument at all (i.e,  mont = Monty.new)
-
-
-to run one simulation a user must call .run_sim on your monty object.  To see how many wins
-there were call .switch_win or .stay_win
-
-***NOTE***
-Depending on the boolean value of switch only one of @switch_win or @stay_win will be
-updated. We made this decision to keep them separate for the purpose of controlled
-experiments.  
+To simulate a stay, instantiate a Stay object and repeat the process for the Switch.
