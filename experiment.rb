@@ -20,9 +20,9 @@ switch_hashes.each do |i|
   switch_objects << Switch.new(i)
 end
 
-stay_hashes.each do |i|
-  stay_objects << Stay.new(i)
-end
+# stay_hashes.each do |i|
+#   stay_objects << Stay.new(i)
+# end
 
 switch_objects.each do |i|
   1000.times do
@@ -31,12 +31,12 @@ switch_objects.each do |i|
   p i.switch_win
 end
 
-stay_objects.each do |i|
-  1000.times do
-    i.run_sim
-  end
-  p i.stay_win
-end
+# stay_objects.each do |i|
+#   1000.times do
+#     i.run_sim
+#   end
+#   p i.stay_win
+# end
 
 p "Incrementing reveals on 20 door case with switch..."
 
