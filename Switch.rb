@@ -21,12 +21,12 @@ class Switch < Monty
   def switch_sim(player_choice)
     if @doors[player_choice].nil?
       @doors[player_choice] = "player choice"
-      @num_of_reveals.times do
+      num_of_reveals.times do
         host_reveal
       end
       player_choice_options = @doors.each_index.select{|elem| @doors[elem] != "host reveal" and @doors[elem] != "player choice"}
       player_choice = player_choice_options[rand(player_choice_options.length)]
-      @switch_win = @switch_win.succ if chk_win(player_choice)
+      @switch_win += 1 if chk_win(player_choice)
     end
   end
 

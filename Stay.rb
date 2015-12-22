@@ -7,7 +7,7 @@ class Stay < Monty
   end
 
   def local_sim(player_choice)
-    @stay_win = @stay_win.succ if chk_win(player_choice)
+    @stay_win += 1 if chk_win(player_choice)
   end
 
   def self.reload

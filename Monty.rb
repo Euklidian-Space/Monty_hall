@@ -1,9 +1,5 @@
-###This class runs one iteration of the monty hall simulation
-###everytime run_sim is called on an instance of Monty.
-###The amount of simulations will be determined by the scientist
-###who decides to utilize this class in his/her own script
 class Monty
-  attr_reader :sim_count
+  attr_reader :sim_count, :num_of_reveals, :num_of_doors
   def initialize(args = {})
     @num_of_doors = args[:num_of_doors] || default_num_of_doors
     @num_of_reveals = args[:num_of_reveals] || default_num_of_reveals
@@ -13,7 +9,7 @@ class Monty
   end
 
   def run_sim
-    @sim_count = @sim_count.succ
+    @sim_count += 1
     hide_prize
     player_choice_1 = rand(@num_of_doors)
     local_sim(player_choice_1)
